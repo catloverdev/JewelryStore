@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+        <div>
+            <span>Артикул: {{ product.id_product }}</span>
+        </div>
+        <div>
+            <span>
+                Название:
+            </span>
+            <a href="product_single.html">
+            {{ product.title }}
+            </a>
+        </div>
+        <div>
+            <span>
+                Описание:
+            </span>
+            <span>{{ product.description}}</span>
+        </div>
+        <div>
+            <span>
+                Вставки:
+            </span>
+            <span>
+                {% for gem in product.gems.all %}
+                    {{ gem.name }}, вес {{ product.weight_one_gem }}, количество {{ product.amount }} шт.
+                {% endfor %}
+            </span>
+        </div>
+        <div>
+            <span>
+                Материалы:
+            </span>
+            <span>
+                {{ product.material.name }}, проба {{ product.material.probe }}, вес {{ product.weight_material }} гр.
+            </span>
+        </div>
+    </div>
+</body>
+</html>

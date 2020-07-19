@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for product in product_list %}
+    <div>
+        <div>
+            <img src="{{ product.image.url }}" alt="">
+        </div>
+        <div>
+            <a href="{{ product.get_absolute_url }}">
+            {{ product.title }}
+            </a>
+        </div>
+        <div>
+            <span>{{ product.description}}</span>
+        </div>
+    </div>
+{% endfor %}
+</body>
+</html>

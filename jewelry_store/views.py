@@ -1,12 +1,19 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 # Create your views here.
 
 from jewelry_store.models import Product
 
 
-class ProductsView(View):
-    """Категории"""
-    def get(self, request):
-        products = Product.objects.all()
-        return render(request, "products/products_list.html", {"product_list": products})
+class ProductsView(ListView):
+    """Список товаров"""
+    model = Product
+    queryset = Product.objects.all()
+    # template_name = "products/product_list.html"
+
+
+class ProductDetailView(DetailView):
+    """"Полное описание изделия"""
+    model = Product
+    slug_field = "url"

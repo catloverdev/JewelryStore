@@ -3,6 +3,9 @@ from datetime import date
 
 
 # Create your models here.
+from django.urls import reverse
+
+
 class Material(models.Model):
     """Материалы"""
     name = models.CharField("Имя", max_length=149)
@@ -74,6 +77,9 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.id_product}, {self.title}"
+
+    def get_absolute_url(self):
+        return reverse("product_detail", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Изделие"
