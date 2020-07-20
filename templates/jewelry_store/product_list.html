@@ -11,6 +11,9 @@
             <img src="{{ product.image.url }}" alt="">
         </div>
         <div>
+            {{ product.get_latest_price }} руб.
+        </div>
+        <div>
             <a href="{{ product.get_absolute_url }}">
             {{ product.title }}
             </a>

@@ -76,10 +76,15 @@ class Product(models.Model):
     amount = models.PositiveSmallIntegerField("Количество", default=0)
 
     def __str__(self):
-        return f"{self.id_product}, {self.title}"
+        return f"Артикул: {self.id_product} ({self.title})"
 
     def get_absolute_url(self):
         return reverse("product_detail", kwargs={"slug": self.url})
+
+    def get_latest_price(self):
+        return self.productprice_set.latest('date').price
+
+    get_latest_price.short_description = "Цена"
 
     class Meta:
         verbose_name = "Изделие"
@@ -123,7 +128,7 @@ class ProductPrice(models.Model):
     """Цены"""
     product = models.ForeignKey(Product, verbose_name="Номер продукта", on_delete=models.CASCADE)
     date = models.DateField("Дата изменения", default=date.today)
-    price = models.FloatField("Цена", default=0, help_text="руб.")
+    price = models.PositiveIntegerField("Цена", default=0, help_text="руб.")
 
     def __str__(self):
         return f"{self.product} {self.date} {self.price}"

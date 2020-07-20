@@ -10,7 +10,7 @@ class ProductsView(ListView):
     """Список товаров"""
     model = Product
     queryset = Product.objects.all()
-    # template_name = "products/product_list.html"
+    # template_name = "jewelry_store/index.html"
 
 
 class ProductDetailView(DetailView):
