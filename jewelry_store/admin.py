@@ -8,16 +8,16 @@ from jewelry_store.models import *
 # декоратор
 @admin.register(CategoriesProduct)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "parent_category", "url")
+    list_display = ("name", "url")
     list_display_links = ("name", )
     search_fields = ("name", )
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("id_product", "title", "get_latest_price", "material", "get_image")
+    list_display = ("id_product", "title", "get_latest_price", "material", "get_image", "with_gems")
     list_display_links = ("title",)
-    list_filter = ("material", )
+    list_filter = ("category", "material", "with_gems")
     search_fields = ("title", "material__id")
     save_as = True
     readonly_fields = ('get_latest_price', 'get_image', )
@@ -31,8 +31,8 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(ProductPrice)
 class PriceAdmin(admin.ModelAdmin):
     list_display = ("product", "price", "date")
-    list_filter = ("product", "date")
-    search_fields = ("product", "price", "date")
+    list_filter = ("date", )
+    search_fields = ("product", "date")
     list_editable = ("price", )
 
 

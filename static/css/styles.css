@@ -199,28 +199,25 @@ h2 {
 
 
 
-
-
-
-
-
-
-
-
-
-
 .wrapper {
     background-color: rgb(255, 255, 255);
 }
 .content {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    /* flex-direction: row; */
     min-height: 100%;
-    max-width: 1200px;
+    max-width: 100%;
 }
 
+.come_in_form {
+    margin: 2%;
+}
+
+.form-control {
+    width: 50%;
+}
 
 .item_card {
     border: 2px solid red;
@@ -285,6 +282,7 @@ html, body {
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    color: black;
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -297,27 +295,28 @@ html, body {
     /* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
     padding: 0;
     margin: 7% 10px;
-    border-radius: 10px;
+    
     text-align: justify;
     max-width: 410px;
     min-width: 300px;
-    height: 550px;
-    background-color: rgba(122, 122, 122, 0.616);
+    height: fit-content;
+    background-color: rgba(122, 122, 122, 0.308);
 }
 
 .achievment img {
     max-width: 100%;
-    border-radius: 10px;
+   
 }
 
 .achievment_text {
-    padding: 20px 10px;
+    padding: 10px 10px;
     box-sizing: border-box;
+    
 }
 
 
 .achievment_text p {
-    height: 230px;
+    height: 30px;
 }
 
 
@@ -366,6 +365,99 @@ html, body {
 }
 .achievment_text h2 {
     font-size: 30px;
+}
+
+
+
+
+
+
+.rings_props {
+    
+
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color: black;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.ring_props {
+    max-width: 65%;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
+    padding: 0;
+    margin: 0;
+    
+    text-align: justify;
+    /* max-width: 410px;
+    min-width: 300px; */
+    height: auto;
+    background-color: rgba(122, 122, 122, 0.308);
+}
+
+.ring_props img {
+    max-width: 100%;
+   
+}
+
+
+.ring_props_text {
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
+    padding: 0;
+    margin: 7% 10px;
+    
+    text-align: justify;
+    max-width: 410px;
+    min-width: 300px;
+    height: fit-content;
+    /* background-color: rgba(122, 122, 122, 0.308); */
+}
+
+.article {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+    color: black;
+    text-align: justify;
+}
+
+.article_text {
+    color: dimgray;
+    font-size: 150%;
+}
+
+.article_num {
+    color: dimgray;
+    font-size: 150%;
+}
+
+.discount {
+    color: rgb(255, 0, 0);
+    font-size: 150%;
+}
+
+.ring_about {
+    color: dimgray;
+    font-size: 100%;
+}
+.btn-danger {
+    background-color: rgb(255, 0, 0);
+}
+.btn-secondary {
+    background-color: rgb(151, 151, 151);
+    margin: 0 5px 0 5px;
 }
 
 

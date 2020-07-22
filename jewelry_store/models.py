@@ -48,13 +48,16 @@ class Client(models.Model):
 
 class CategoriesProduct(models.Model):
     """Категории"""
-    parent_category = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL,
-                                        blank=True, null=True)
+    # parent_category = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL,
+    #                                     blank=True, null=True)
     name = models.CharField("Категория", max_length=149)
     url = models.SlugField(max_length=199, unique=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("product_list", kwargs={"slug": self.url})
 
     class Meta:
         verbose_name = "Категория"
@@ -66,7 +69,8 @@ class Product(models.Model):
     id_product = models.AutoField("Артикул", primary_key=True)
     category = models.ManyToManyField(CategoriesProduct, verbose_name="Категория", related_name="product_categories")
     material = models.ForeignKey(Material, verbose_name="Материал", on_delete=models.SET_NULL, null=True)
-    gems = models.ManyToManyField(Gems, verbose_name="Драгоценные камни", related_name="product_gems")
+    gems = models.ManyToManyField(Gems, verbose_name="Драгоценные камни", related_name="product_gems", blank=True)
+    with_gems = models.BooleanField("Со вставками", default=True)
     title = models.CharField("Название", max_length=149)
     description = models.TextField("Описание")
     image = models.ImageField("Изображение", upload_to="products/")
@@ -80,6 +84,9 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse("product_detail", kwargs={"slug": self.url})
+
+    def get_stone(self):
+        return self.gems.first()
 
     def get_latest_price(self):
         return self.productprice_set.latest('date').price
