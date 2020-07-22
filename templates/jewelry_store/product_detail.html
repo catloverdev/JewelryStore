@@ -1,27 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="fixed col-lg-12">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light"> <img src="{% static 'img/icon.jpeg' %}" loading="lazy" width="30" height="30" class="d-inline-block align-top" alt=""> <a class="navbar-brand" href="{% url 'home' %}">&nbsp;JewelryStore</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-				<div class="topmenu collapse navbar-collapse" id="navbarColor02">
-					<ul class=" navbar-nav mr-auto">
-                        {% for category in categories_list %}
-						<li class="nav-item active"> <a class="nav-link" href="/category/{{ category.id }}/{{ category.url }}">{{ category.name }}<span class="sr-only">(current)</span></a>
-
-						</li>
-                        {% endfor %}
-					</ul>
-					<a href="open_cart.html">
-						<button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-					</a>
-					<a href="come_in.html">
-						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Вход | Регистрация</button>
-					</a>
-				</div>
-			</nav>
-</div>
-
 <div class="content">
 				<div class="rings_props">
 					<div class="ring_props">

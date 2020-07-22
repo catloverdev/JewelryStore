@@ -75,9 +75,9 @@ class Product(models.Model):
     description = models.TextField("Описание")
     image = models.ImageField("Изображение", upload_to="products/")
     url = models.SlugField(max_length=199, unique=True)
-    weight_material = models.FloatField("Вес", default=0, help_text="граммы")
+    weight_material = models.FloatField("Вес металла", default=0, help_text="граммы")
     weight_one_gem = models.FloatField("Вес одного камня", default=0, help_text="караты")
-    amount = models.PositiveSmallIntegerField("Количество", default=0)
+    amount = models.PositiveSmallIntegerField("Количество камней (данного типа)", default=0, help_text="шт")
 
     def __str__(self):
         return f"Артикул: {self.id_product} ({self.title})"

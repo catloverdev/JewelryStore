@@ -24,70 +24,14 @@
 	</head>
 
 	<body>
-		<div class="pre_loader">
-			<div class="preloader__pos">
-				<div class="circle">
-					<div class="circle1"></div>
-				</div>
-			</div>
-		</div>
-		<div class="pre_loader">
-			<div class="preloader__pos">
-				<div class="circle">
-					<div class="circle1"></div>
-				</div>
-			</div>
-		</div>
 
+        {% include 'include/header.html' %}
 
         {% block content %}
 
         {% endblock content %}
-				<div class="footer">
-					<div class="bottom_menu"> <span><u>Покупателям</u></span>
-						<br> <a href="come_in.html">Личный кабинет</a>
-						<br> <a href="#">Доставка и оплата</a>
-						<br> <a href="#">Возврат и обмен</a>
-						<br> <a href="#">Акции</a>
-						<br> <a href="#">Подарочные сертификаты</a>
-						<br> <a href="#">Контакты</a>
-                    </div>
-					<div class="social">
-						<div class="phone_sty">
-							<p>+7 222 333 222</p>
-						</div>
-						<ul class="socialIcons">
-							<li>
-								<div><a title="Facebook | JewelryStore" href="https://facebook.com" target="_blank" rel="noreferrer" class="facebook"><i class="fa fa-facebook-square"></i></a></div>
-							</li>
-							<li>
-								<div><a title="Instagram | JewelryStore" href="https://instagram.com" target="_blank" rel="noreferrer" class="instagram"><i class="fa fa-instagram"></i></a></div>
-							</li>
-							<li>
-								<div><a title="VKontakte | JewelryStore" href="https://vk.com" target="_blank" rel="noreferrer" class="vk"><i class="fa fa-vk"></i></a></div>
-							</li>
-							<li>
-								<div><a title="Whatsapp | JewelryStore" href="https://whatsapp.com" target="_blank" rel="noreferrer" class="whatsapp"><i class="fa fa-whatsapp"></i></a></div>
-							</li>
-							<li>
-								<div><a title="Twitter | JewelryStore" href="https://twitter.com" target="_blank" rel="noreferrer" class="twitter"><i class="fa fa-twitter"></i></a></div>
-							</li>
-						</ul>
-					</div>
-					<div class="copyright"> &copy; JewelryStore
-						</div>
-                </div>
-						<p id="yyyy"></p>
-						<script>
-							let d = new Date();
-							document.getElementById("yyyy").innerHTML = d.getFullYear();
-						</script>
-				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-				</script>
-				<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
-				<script src="{% static 'js/jquery 3.4.1. min.js' %}"></script>
-				<script src="{% static 'js/menu_mobile_toggle.js' %}"></script>
-				<noscript>Sorry, your browser does not support JavaScript!</noscript>
+
+        {% include 'include/footer.html' %}
 	</body>
 
 </html>

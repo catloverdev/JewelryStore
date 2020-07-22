@@ -6,12 +6,12 @@ from django.views.generic.base import View
 from jewelry_store.models import Product, CategoriesProduct
 
 
-def product_list(request, pk, slug):
+def product_list(request, pk):
     categories = CategoriesProduct.objects.all()
     products = Product.objects.filter(category=pk)
     context = {
-        'product_list': products,
-        'categories_list': categories
+        'products': products,
+        'categoriesproduct_list': categories
     }
     return render(request, 'jewelry_store/product_list.html', context)
 
@@ -21,7 +21,7 @@ def product_detail(request, pk):
     product = Product.objects.get(id_product=pk)
     context = {
         'product': product,
-        'categories_list': categories
+        'categoriesproduct_list': categories
     }
     return render(request, 'jewelry_store/product_detail.html', context)
 

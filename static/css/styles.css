@@ -93,12 +93,10 @@ a.back-to-top  {
     
     color: rgba(255, 255, 255, 0.5);
     font-size: 20px;
-    
-    background:  no-repeat center/55% url(../../assets/img/upArrow.png) #343a40;
+
     opacity:  1;
-    border: .5px solid red;
-    border-color:rgba(255, 255, 255, 0.1);
-    
+    border: 5px solid rgba(255, 255, 255, 0.1);
+
     border-radius:  3px;
     
     /* box-shadow:  3px 3px 7px 7px rgba(0, 0, 0, 0.1),  0 1px 1px rgba(0, 0, 0, 0.1); */
@@ -108,7 +106,6 @@ a.back-to-top:hover  {
     transition:  0.5s;
 }
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
 
 
 
@@ -193,12 +190,6 @@ h2 {
 }
 
 
-
-
-
-
-
-
 .wrapper {
     background-color: rgb(255, 255, 255);
 }
@@ -207,7 +198,7 @@ h2 {
     padding: 0;
     /* display: flex; */
     /* flex-direction: row; */
-    min-height: 100%;
+    /*min-height: 100%;*/
     max-width: 100%;
 }
 
@@ -252,7 +243,6 @@ html, body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    background-image: url('../img/yellow.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -264,8 +254,8 @@ html, body {
     color: rgb(255, 255, 255);
     font-family: 'Roboto', sans-serif;
     text-align: justify;
-    align-items: left;
-    margin: 4% 3% 0% 50%;
+    align-items: flex-end;
+    margin: 4% 3% 0 50%;
 }
 
 .article h1 {
@@ -278,29 +268,28 @@ html, body {
 
 .achievments {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: black;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-    height: fit-content;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	color: black;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	height: fit-content;
 }
 
 .achievment {
     display: flex;
-    flex-direction: column;
-    /* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
-    padding: 0;
-    margin: 7% 10px;
-    
-    text-align: justify;
-    max-width: 410px;
-    min-width: 300px;
-    height: fit-content;
-    background-color: rgba(122, 122, 122, 0.308);
+	flex-direction: column;
+	/* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
+	padding: 0;
+	margin: 7% 10px;
+	text-align: justify;
+	max-width: 410px;
+	min-width: 300px;
+	height: fit-content;
+	background-color: rgba(122, 122, 122, 0.308);
 }
 
 .achievment img {
@@ -418,7 +407,6 @@ html, body {
     margin: 7% 10px;
     
     text-align: justify;
-    max-width: 410px;
     min-width: 300px;
     height: fit-content;
     /* background-color: rgba(122, 122, 122, 0.308); */
@@ -491,9 +479,9 @@ html, body {
     font-size:  2.5rem;
     height:  50px;
     width:  60px;
-    color:  #bebebe;
+    color: #bebebe;
     transition:  all ease 0.3s;
-    text-shadow:  0px 0px 1px black,  0px 0px 1px black;
+    text-shadow:  0 0 1px black,  0 0 1px black;
 }
 
 .socialIcons li a:hover  {
@@ -507,7 +495,6 @@ html, body {
     display: flex;
     flex-flow: row wrap;
     width:  100%;
-    height:  100%;
     margin:  0;
     padding:  0;
     text-align:  center;
@@ -545,9 +532,7 @@ html, body {
 
 .copyright  {
     width: 100%;
-    height:  100%;
-    margin:  20px 0 0 0;
-    padding:  0;
+    padding-bottom: 20px;
     text-align:  center;
     background-color:  rgb(255, 255, 255);
     color:  #8a8a8a;
@@ -561,7 +546,7 @@ html, body {
   
         max-width: 300px;
 
-        height: 550;
+        height: 550px;
  
     }
     .logo {
@@ -601,8 +586,8 @@ html, body {
         color: rgb(255, 255, 255);
         font-family: 'Roboto', sans-serif;
         text-align: justify;
-        align-items: left;
-        margin: 4% 3% 0% 15%;
+        align-items: flex-end;
+        margin: 4% 3% 0 15%;
      
     }
     
@@ -656,7 +641,7 @@ html, body {
         color: rgb(255, 255, 255);
         font-family: 'Roboto', sans-serif;
         text-align: justify;
-        align-items: left;
+        align-items: flex-end;
         margin: 4% 3% 0% 15%;
         font-size: smaller;
         line-height: normal;
@@ -665,7 +650,7 @@ html, body {
   
         max-width: 300px;
 
-        height: 550;
+        height: 550px;
  
     }
     .achievment_text h2 {
@@ -686,16 +671,10 @@ html, body {
 html, body {
     height: 100%;
 }
-footer {
-    color: #666;
-    background-color: #222;
-    padding: 17px 0 18px 0;
-    border-top: 1px solid #000;
-}
-footer a {
+.footer a {
     color: #999;
     text-decoration: none !important;
 }
-footer a:hover {
+.footer a:hover {
     color: #efefef;
 }
