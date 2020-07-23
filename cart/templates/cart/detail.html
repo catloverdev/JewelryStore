@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="main_goods">
+    <div class="head_mgoods">
+        <h1>Товары к заказу</h1>
+    </div>
+    <div class="price_out">
+        {% if cart.get_len %}
+            <div class="goods">
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <div>
+                        <div class="con_img">
+                            <a href="{% url 'product_detail' pk=product.id_product %}">
+                                <img src="{{ product.image.url }}" alt="">
+                            </a>
+                        </div>
+                        <div>
+                            {{ product }}
+                        </div>
+                        <div>
+                            {{ product.title }}
+                        </div>
+                        <div>
+                            Количество товара:
+                            {{ item.quantity }}
+                        </div>
+                        <div>
+                            Цена:
+                            {{ item.product.get_latest_price }}
+                        </div>
+                        <div>
+                            <a href="{% url "cart:cart_remove" product.id_product %}">Убрать</a>
+                        </div>
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+            {% else %}
+            <div class="goods">
+            Корзина пуста
+            </div>
+        {% endif %}
+        <div class="price">
+            <div class="inner_price">
+                <h3 style="margin-bottom: 20px;">Стоимость заказа</h3>
+                <p style="color: grey;">{{ cart.get_total_price }} руб.</p>
+                <div style="margin-bottom: 20px;">
+                    <a href="{% url 'order_create' %}" ><button class="btn btn-secondary my-2 my-sm-0" type="submit">Оплатить</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

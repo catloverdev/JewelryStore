@@ -8,7 +8,7 @@ from jewelry_store.models import *
 # декоратор
 @admin.register(CategoriesProduct)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "url")
+    list_display = ("name",)
     list_display_links = ("name", )
     search_fields = ("name", )
 
@@ -20,6 +20,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ("category", "material", "with_gems")
     search_fields = ("title", "material__id")
     save_as = True
+    save_on_top = True
     readonly_fields = ('get_latest_price', 'get_image', )
 
     def get_image(self, obj):
@@ -33,7 +34,7 @@ class PriceAdmin(admin.ModelAdmin):
     list_display = ("product", "price", "date")
     list_filter = ("date", )
     search_fields = ("product", "date")
-    list_editable = ("price", )
+    readonly_fields = ("product", "price", "date")
 
 
 @admin.register(Material)
@@ -49,16 +50,36 @@ class GemsAdmin(admin.ModelAdmin):
     list_filter = ("name", )
 
 
-# @admin.register(Purchase)
-# class PurchaseAdmin(admin.ModelAdmin):
-#     list_display = ("name",)
-#     list_filter = ("name",)
+@admin.register(Purchase)
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = ("id_purchase", 'client', 'date')
+    list_filter = ("id_purchase",)
+    search_fields = ("id_purchase",)
+    readonly_fields = ("id_purchase", 'client', 'date')
 
 
-admin.site.register(Purchase)
-admin.site.register(AllPurchases)
-admin.site.register(Status)
-admin.site.register(Client)
+@admin.register(AllPurchases)
+class AllPurchasesAdmin(admin.ModelAdmin):
+    list_display = ("purchase", 'product', 'price', 'amount')
+    list_filter = ("purchase",)
+    search_fields = ("purchase",)
+    readonly_fields = ("purchase", 'product', 'price', 'amount')
+
+
+@admin.register(Status)
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ("purchase", 'date', 'status')
+    list_filter = ("purchase", 'status')
+    search_fields = ("purchase",)
+    readonly_fields = ("purchase", 'date', 'status')
+
+
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ("name", 'email', 'phone')
+    search_fields = ('id', 'phone',)
+    readonly_fields = ("name", 'email', 'phone')
+
 
 admin.site.site_title = "Ювелирный магазин"
 admin.site.site_header = "Ювелирный магазин"

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Checkout</h1>
+    <div class="all_goods">
+        <div class="head_mgoods">
+            <h3>Заполните данные</h3>
+            <form action="." method="post" class="order-form">
+                {{ form.as_p }}
+                <p><input type="submit" value="Оформить заказ"></p>
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="check_goods">
+            <div class="head_mgoods">
+                 <h3>Ваш заказ</h3>
+            </div>
+            <div>
+                <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }}x {{ item.product.title }}
+                        <span>${{ item.total_price }}</span>
+                    </li>
+                {% endfor %}
+                </ul>
+                <div class="total">
+                    <p>Итого: {{ cart.get_total_price }} руб.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

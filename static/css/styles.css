@@ -88,7 +88,7 @@ a.back-to-top  {
     right:  17px;
     bottom:  10px;
     padding: 4px 12px;
-    background:  #343a40;
+    background: no-repeat center/55% url(../../static/img/upArrow.png) #343a40;
 
     
     color: rgba(255, 255, 255, 0.5);
@@ -143,6 +143,72 @@ h2 {
     padding: 0;
     display: flex;
     flex-direction: column;
+}
+
+.created {
+    margin-top: 90px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.main_goods {
+    height: fit-content;
+    width: 100%;
+    margin: 0;
+    padding-top: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.total {
+    margin-left: 20px;
+}
+
+.all_goods {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.price_out {
+    display: flex;
+    flex-direction: row;
+}
+
+.head_mgoods {
+    margin-left: 20px;
+}
+
+.check_goods {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.goods {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.price {
+    width: 40%;
+    margin-left: auto;
+}
+
+.inner_price {
+    background-color: #f8f9fa;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 .header {
@@ -266,6 +332,11 @@ html, body {
     font-size: 26px;
 }
 
+.con_img img{
+    width: 50px;
+    height: 60px;
+}
+
 .achievments {
     display: flex;
 	justify-content: space-around;
@@ -383,7 +454,7 @@ html, body {
     flex-direction: column;
     /* box-shadow: 10px 14px 10px 2px rgba(255, 255, 255, 0.25), 10px 14px 18px 5px rgba(255, 255, 255, 0.25); */
     padding: 0;
-    margin: 0;
+    margin-left: 100px;
     
     text-align: justify;
     /* max-width: 410px;
@@ -394,7 +465,6 @@ html, body {
 
 .ring_props img {
     max-width: 100%;
-   
 }
 
 
@@ -501,6 +571,7 @@ html, body {
     background-color:  rgb(255, 255, 255);
     color:  #040113;
     font-family: 'Roboto', sans-serif;
+    flex-shrink: 0;
 }
 .footer a  {
     color:  #8a8a8a;

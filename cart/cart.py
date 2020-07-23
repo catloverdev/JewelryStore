@@ -1,4 +1,3 @@
-from decimal import Decimal
 from django.conf import settings
 from jewelry_store.models import Product
 
@@ -49,7 +48,7 @@ class Cart(object):
             item['total_price'] = item['price'] * item['quantity']
             yield item
 
-    def __len__(self):
+    def get_len(self):
         """Подсчёт всех товаров в корзине"""
         return sum(item['quantity'] for item in self.cart.values())
 

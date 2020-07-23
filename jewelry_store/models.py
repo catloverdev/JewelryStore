@@ -101,13 +101,14 @@ class Product(models.Model):
 class Purchase(models.Model):
     """"Покупка"""
     id_purchase = models.AutoField("Номер покупки", primary_key=True)
-    client = models.ForeignKey(Client, verbose_name="Номер клиента", on_delete=models.CASCADE)
+    client = models.OneToOneField(Client, verbose_name="Номер клиента", on_delete=models.CASCADE)
     date = models.DateField("Дата покупки", default=date.today)
-    product = models.ManyToManyField(Product, verbose_name="товары в покупке",
-                                     related_name="product_purchases", through='AllPurchases')
+
+    def get_total_cost(self):
+        return sum(item.get_cost() for item in self.items.all())
 
     def __str__(self):
-        return f"{self.id_purchase}, {self.client}, {self.date}"
+        return f"{self.id_purchase}, {self.client}"
 
     class Meta:
         verbose_name = "Покупка"
@@ -116,12 +117,16 @@ class Purchase(models.Model):
 
 class AllPurchases(models.Model):
     """"Все покупки"""
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE)
+    purchase = models.ForeignKey(Purchase, verbose_name='Заказ', on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, verbose_name='Изделие', on_delete=models.CASCADE, related_name='order_items')
+    price = models.PositiveIntegerField("Цена", default=0, help_text="руб.")
     amount = models.PositiveSmallIntegerField("Количество товара", default=0)
 
     def __str__(self):
-        return f"{self.product} {self.purchase} {self.amount}"
+        return f"{self.purchase}"
+
+    def get_cost(self):
+        return self.price * self.amount
 
     class Meta:
         verbose_name = "Все покупки"
@@ -151,8 +156,8 @@ class ProductPrice(models.Model):
 class Status(models.Model):
     """Статус покупки"""
     purchase = models.ForeignKey(Purchase, verbose_name="Номер покупки", on_delete=models.CASCADE)
-    date = models.DateField("Дата изменения", default=date.today)
-    status = models.BooleanField(default=False)
+    date = models.DateTimeField("Дата изменения", default=date.today)
+    status = models.BooleanField(verbose_name='Статус заказа', default=False)
 
     def __str__(self):
         return f"{self.purchase} {self.date} {self.status}"
