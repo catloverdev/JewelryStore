@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path("", include("jewelry_store.urls")),
+    path("api-auth/", include('rest_framework.urls')),
 ]
 
 if settings.DEBUG:

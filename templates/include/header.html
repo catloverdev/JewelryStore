@@ -19,7 +19,7 @@
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 				<div class="topmenu collapse navbar-collapse" id="navbarColor02">
 					<ul class=" navbar-nav mr-auto">
-                        {% for category in categoriesproduct_list %}
+                        {% for category in my_categories %}
 						<li class="nav-item active"> <a class="nav-link" href="/category/{{ category.id }}">{{ category.name }}<span class="sr-only">(current)</span></a>
 
 						</li>
