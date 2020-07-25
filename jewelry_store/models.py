@@ -155,7 +155,8 @@ class ProductPrice(models.Model):
 
 class Status(models.Model):
     """Статус покупки"""
-    purchase = models.ForeignKey(Purchase, verbose_name="Номер покупки", on_delete=models.CASCADE)
+    purchase = models.ForeignKey(Purchase, verbose_name="Номер покупки",
+                                 on_delete=models.CASCADE, related_name='statuses')
     date = models.DateTimeField("Дата изменения", default=date.today)
     status = models.BooleanField(verbose_name='Статус заказа', default=False)
 

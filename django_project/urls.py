@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path("", include("jewelry_store.urls")),
     path("api-auth/", include('rest_framework.urls')),
+    path("api/v1/", include("jewelry_store.urls")),
 ]
 
 if settings.DEBUG:

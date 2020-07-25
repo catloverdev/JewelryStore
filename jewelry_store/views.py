@@ -4,8 +4,11 @@ from cart.cart import Cart
 from jewelry_store.forms import ClientCreateForm
 # Create your views here.
 
-from jewelry_store.models import Product
 from cart.forms import CartAddProductForm
+
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from jewelry_store.serializer import *
 
 
 def product_list(request, pk):
@@ -51,3 +54,68 @@ def client_order_create(request):
         form = ClientCreateForm
     return render(request, 'jewelry_store/create.html', {'cart': cart,
                                                          'form': form})
+
+
+class ProductListView(APIView):
+    def get(self, request):
+        products = Product.objects.all()
+        serializer = ProductListSerializer(products, many=True)
+        return Response(serializer.data)
+
+
+class ProductDetailView(APIView):
+    def get(self, request, pk):
+        products = Product.objects.get(id_product=pk)
+        serializer = ProductDetailSerializer(products)
+        return Response(serializer.data)
+
+
+class PriceListView(APIView):
+    def get(self, request):
+        prices = ProductPrice.objects.all()
+        serializer = PriceListSerializer(prices, many=True)
+        return Response(serializer.data)
+
+
+class PriceDetailView(APIView):
+    def get(self, request, pk):
+        price = ProductPrice.objects.filter(product__id_product=pk)
+        serializer = PriceDetailSerializer(price, many=True)
+        return Response(serializer.data)
+
+
+class ClientListView(APIView):
+    def get(self, request):
+        clients = Client.objects.all()
+        serializer = ClientListSerializer(clients, many=True)
+        return Response(serializer.data)
+
+
+class ClientDetailView(APIView):
+    def get(self, request, pk):
+        client = Client.objects.get(purchase__id_purchase=pk)
+        serializer = ClientDetailSerializer(client)
+        return Response(serializer.data)
+
+
+class StatusListView(APIView):
+    def get(self, request):
+        status = Status.objects.all()
+        serializer = StatusListSerializer(status, many=True)
+        return Response(serializer.data)
+
+
+class StatusDetailView(APIView):
+    def get(self, request, pk):
+        status = Status.objects.filter(purchase__id_purchase=pk)
+        serializer = StatusDetailSerializer(status, many=True)
+        return Response(serializer.data)
+
+
+class CreateStatusView(APIView):
+    """Создание статуса"""
+    def post(self, request):
+        serializer = StatusCreateSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=201)
