@@ -14,8 +14,7 @@ def cart_add(request, pk):
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
-                 quantity=cd['quantity'],
-                 update_quantity=cd['update'])
+                 quantity=cd['quantity'])
         cart.save()
     return redirect('cart:cart_detail')
 
@@ -28,7 +27,5 @@ def cart_remove(request, pk):
 
 
 def cart_detail(request):
-    categories = CategoriesProduct.objects.all()
     cart = Cart(request)
-    return render(request, 'cart/detail.html', {'cart': cart,
-                                                'categoriesproduct_list': categories})
+    return render(request, 'cart/detail.html', {'cart': cart})

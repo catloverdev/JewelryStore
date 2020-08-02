@@ -1,56 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="content">
-				<div class="rings_props">
-					<div class="ring_props">
-						<img src="{{ product.image.url }}" alt="ring">
-					</div>
-					<div class="ring_props_text">
-						<div class="article">
-							<div class="article_text"> <span>Артикул:&nbsp;</span> </div>
-							<div class="article_num"> <span>{{ product.id_product }}</span> </div>
-						</div>
-						<div class="ring_about">
-                            <span>
-                            {{ product.title }}
-                            </span>
+    <div class="content">
+                    <div class="rings_props">
+                        <div class="ring_props">
+                            <img src="{{ product.image.url }}" alt="ring">
                         </div>
-						<div class="article_num">
-							<h1>{{ product.get_latest_price }} ₽ </h1> </div>
-						<div>
-							<hr>
+                        <div class="ring_props_text">
+                            <div class="article">
+                                <div class="article_text"> <span>Артикул:&nbsp;</span> </div>
+                                <div class="article_num"> <span>{{ product.id_product }}</span> </div>
+                            </div>
+                            <div class="ring_about">
+                                <span>
+                                {{ product.title }}
+                                </span>
+                            </div>
+                            <div class="article_num">
+                                <h1>{{ product.get_latest_price }} ₽ </h1> </div>
+                            <div>
+                                <hr>
+                            </div>
+                            <form action="{% url "cart:cart_add" product.id_product %}" method="post">
+                                {{ cart_product_form }}
+                                {% csrf_token %}
+                                <input type="submit" value="Добавить в корзину">
+                            </form>
+    {#						<button type="button" class="btn btn-danger btn-buy" id="1">Добавить в корзину <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>#}
+                            <div>
+                                <hr>
+                            </div>
+                            <h3>Подробное описание</h3>
+                            {% if product.with_gems %}
+                            <p>Вставки</p>
+                            {% if product.gems.all.count == 1 %}
+                                {{ product.get_stone.name }}, вес {{ product.weight_one_gem }} карат, количество {{ product.amount }} шт
+                                {% else %}
+                                {% for gem in product.gems.all %}
+                                <p>{{ gem.name }}</p>
+                                {% endfor %}
+                            {% endif %}
+                            <div>
+                                <hr>
+                            </div>
+                            {% endif %}
+                            <p>Материалы</p>
+                            <p>{{ product.material.name }}, проба {{ product.material.probe }}, вес от {{ product.weight_material }} гр</p>
+                            <div>
+                                <hr> </div>
+                            <p>Описание </p>
+                            <p>{{ product.description }}</p>
                         </div>
-                        <form action="{% url "cart:cart_add" product.id_product %}" method="post">
-                            {{ cart_product_form }}
-                            {% csrf_token %}
-                            <input type="submit" value="Добавить в корзину">
-                        </form>
-{#						<button type="button" class="btn btn-danger btn-buy" id="1">Добавить в корзину <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>#}
-						<div>
-							<hr>
-                        </div>
-						<h3>Подробное описание</h3>
-                        {% if product.with_gems %}
-						<p>Вставки</p>
-                        {% if product.gems.all.count == 1 %}
-                            {{ product.get_stone.name }}, вес {{ product.weight_one_gem }} карат, количество {{ product.amount }} шт
-                            {% else %}
-                            {% for gem in product.gems.all %}
-                            <p>{{ gem.name }}</p>
-                            {% endfor %}
-                        {% endif %}
-						<div>
-							<hr>
-                        </div>
-                        {% endif %}
-						<p>Материалы</p>
-						<p>{{ product.material.name }}, проба {{ product.material.probe }}, вес от {{ product.weight_material }} гр</p>
-						<div>
-							<hr> </div>
-						<p>Описание </p>
-						<p>{{ product.description}}</p>
-					</div>
-                </div>
-</div>
+                    </div>
+    </div>
 {% endblock content %}

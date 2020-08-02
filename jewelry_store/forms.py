@@ -6,4 +6,3 @@ class ClientCreateForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = ['name', 'email', 'phone']
-

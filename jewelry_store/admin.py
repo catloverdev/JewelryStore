@@ -15,7 +15,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("id_product", "title", "get_latest_price", "material", "get_image", "with_gems")
+    list_display = ("id_product", "title", "get_latest_price", "material", "get_image", "with_gems", "amount_storage")
     list_display_links = ("title",)
     list_filter = ("category", "material", "with_gems")
     search_fields = ("title", "material__id")
@@ -52,10 +52,10 @@ class GemsAdmin(admin.ModelAdmin):
 
 @admin.register(Purchase)
 class PurchaseAdmin(admin.ModelAdmin):
-    list_display = ("id_purchase", 'client', 'date')
+    list_display = ("id_purchase", 'client', 'date', 'get_latest_status')
     list_filter = ("id_purchase",)
     search_fields = ("id_purchase",)
-    readonly_fields = ("id_purchase", 'client', 'date')
+    readonly_fields = ("id_purchase", 'client', 'date', 'get_latest_status')
 
 
 @admin.register(AllPurchases)

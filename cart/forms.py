@@ -1,9 +1,12 @@
 from django import forms
-from jewelry_store.models import Product
-
-PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 5)]
+MAX_AMOUNT = 20
 
 
 class CartAddProductForm(forms.Form):
-    quantity = forms.TypedChoiceField(choices=PRODUCT_QUANTITY_CHOICES, coerce=int, label='Количество')
-    update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
+    def set_amount(self, amount: int):
+        am = amount
+        if MAX_AMOUNT < amount:
+            am = MAX_AMOUNT
+        self.fields['quantity'].choices = [(i, str(i)) for i in range(1, am + 1)]
+
+    quantity = forms.TypedChoiceField(choices=[(i, str(i)) for i in range(1, 6)], coerce=int, label='Количество')

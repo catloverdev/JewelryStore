@@ -88,7 +88,7 @@ a.back-to-top  {
     right:  17px;
     bottom:  10px;
     padding: 4px 12px;
-    background: no-repeat center/55% url(../../static/img/upArrow.png) #343a40;
+    background: no-repeat center/55% url(../../static/img/upArrow.png) #6300ff;
 
     
     color: rgba(255, 255, 255, 0.5);
@@ -137,7 +137,7 @@ h2 {
     text-decoration: none;
 }
 .main {
-    height: auto;
+    min-height: calc(100vh - 370px);
     width: auto;
     margin: 0;
     padding: 0;
@@ -150,15 +150,16 @@ h2 {
     padding-left: 20px;
     padding-bottom: 20px;
     padding-top: 90px;
+    min-height: calc(100vh - 370px);
 }
 
 .main_goods {
-    height: fit-content;
     width: 100%;
     margin: 0;
     padding-top: 70px;
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 370px);
 }
 
 .total {
@@ -166,7 +167,7 @@ h2 {
 }
 
 .all_goods {
-    height: auto;
+    min-height: calc(100vh - 370px);
     width: 100%;
     margin: 0;
     padding-top: 50px;
@@ -267,6 +268,7 @@ h2 {
     /* flex-direction: row; */
     /*min-height: 100%;*/
     max-width: 100%;
+    min-height: calc(100vh - 370px);
 }
 
 .come_in_form {
@@ -295,6 +297,7 @@ html, body {
 }
 .post_txt {
     padding: 1rem;
+    margin-bottom: 2%;
 }
 .carousel_text {
     width: 100%;
@@ -434,7 +437,7 @@ html, body {
 
 
 .rings_props {
-    
+
 
 
     display: flex;
@@ -522,10 +525,10 @@ html, body {
 
 .social  {
     display: inline-block;
-    padding:  5% 0 0 0;
-    margin:  0;
+    margin-bottom:  1%;
+    margin-top: 3%;
     width: calc(100% / 3);
-    text-align: start;
+    text-align: center;
 }
 .phone_sty {
     padding: 20px;
@@ -536,9 +539,8 @@ html, body {
 .socialIcons  {
     z-index:  0;
     padding:  0;
-    margin:  10px 0 0 0;
+    margin:  0 0 0 0;
     list-style-type:  none;
-    height:  fit-content;
 }
 .socialIcons li  {
     display:  inline-block;
@@ -552,7 +554,7 @@ html, body {
     width:  60px;
     color: #bebebe;
     transition:  all ease 0.3s;
-    text-shadow:  0 0 1px black,  0 0 1px black;
+    /*text-shadow:  0 0 1px black,  0 0 1px black;*/
 }
 
 .socialIcons li a:hover  {
@@ -562,17 +564,20 @@ html, body {
 
 
 .footer  {
-    border-top: 2px solid rgb(182, 182, 182);
+    border-top: 2px solid rgb(202, 202, 202);
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
+    align-items: center;
     width:  100%;
-    margin:  0;
-    padding:  0;
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
     text-align:  center;
     background-color:  rgb(255, 255, 255);
     color:  #040113;
     font-family: 'Roboto', sans-serif;
     flex-shrink: 0;
+    height: min-content;
 }
 .footer a  {
     color:  #8a8a8a;
@@ -588,23 +593,33 @@ html, body {
     padding:  0;
     margin:  0;
 }
+
+.cover_bottom {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+    margin-top: 2%;
+}
+
 .bottom_menu {
     display: inline-block;
-    width:  calc(100% / 5);
+    width: fit-content;
     height:  100%;
-    margin:  5% 0 0 2%;
+    margin-left: 2%;
+    margin-right: 2%;
     padding:  0;
     text-align:  left;
     background-color:  rgb(255, 255, 255);
     color:  #8a8a8a;
-    min-width:  300px; 
+    min-width:  300px;
     font-family: 'Roboto', sans-serif;
     font-size:  14pt;
 }
 
 .copyright  {
     width: 100%;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     text-align:  center;
     background-color:  rgb(255, 255, 255);
     color:  #8a8a8a;
@@ -650,7 +665,7 @@ html, body {
 
 
 @media only screen and (min-device-width : 250px) and (max-device-width : 1075px) {
-    
+
     .logo {
         font-size: 20px;
     }
@@ -688,6 +703,7 @@ html, body {
 }
 
 @media only screen and (min-device-width : 250px) and (max-device-width : 570px) {
+
     .article h1 {
         font-size: 50px;
     }
@@ -714,16 +730,13 @@ html, body {
         font-family: 'Roboto', sans-serif;
         text-align: justify;
         align-items: flex-end;
-        margin: 4% 3% 0% 15%;
+        margin: 4% 3% 0 15%;
         font-size: smaller;
         line-height: normal;
     }
     .achievment {
-  
         max-width: 300px;
-
         height: 550px;
- 
     }
     .achievment_text h2 {
         font-size: 25px;
